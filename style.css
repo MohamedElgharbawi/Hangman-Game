@@ -1,0 +1,282 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Tahoma, Arial;
+}
+
+.game {
+    width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f8f8f8;
+}
+
+.game .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.game .head .details {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.game .head .details .time {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.game .head .details .time span {
+    animation: change-opacity 1s infinite;
+}
+
+@keyframes change-opacity {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .2;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.game .head .title ,
+.game .head .details span {
+    color: #009688;
+}
+.game .head .details span{ 
+    font-weight: bold;
+}
+
+.game .body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game .body .draw ,
+.game .body .letters {
+    width: 50%;
+}
+
+.game .body .draw {
+    background: #eee;
+    position: relative;
+    height: 300px;
+    padding: 30px;
+}
+
+.game .body .draw div.part-1,
+.game .body .draw div.part-2,
+.game .body .draw div.part-3,
+.game .body .draw div.part-4 {
+    background:#222;
+}
+
+.game .body .draw div:not(:nth-child(2)) {
+    position: absolute;
+
+}
+
+.game .body .draw .part-1 {
+    width: 70px;
+    height: 3px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.game .body .draw .part-2 {
+    width: 3px;
+    height: 240px;
+    position: relative;
+    bottom: -27px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.game .body .draw .part-3 {
+    width: 95px;
+    height: 3px;
+    left: 50%;
+    top: 57px;
+}
+
+.game .body .draw .part-4 {
+    width: 3px;
+    height: 40px;
+    left: calc(50% + 95px);
+    top: 57px;
+}
+
+.game .body .draw .part-5 {
+    width: 50px;
+    height: 50px;
+    left: calc(50% + 95px);
+    top: 97px;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    border: 3px dashed #222;
+}
+
+.game .body .draw .part-6 {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid #222;
+    left: calc(50% + 95px);
+    top: 122px;
+    transform: translate(-50%, -50%);
+}
+
+.game .body .draw .part-7 {
+    width: 3px;
+    height: 70px;
+    border: 2px solid #222;
+    left: calc(50% + 95px);
+    top: 147px;
+}
+
+.game .body .draw .part-8,
+.game .body .draw .part-9 {
+    width: 60px;
+    height: 60px;
+    border-width: 3px ;
+    border-style: solid;
+    left: calc(50% + 66px);
+}
+
+.game .body .draw .part-8 {
+    border-color: transparent transparent #222 #222;
+    top: 110px;
+    transform: rotate(-45deg);
+}
+
+.game .body .draw .part-9 {
+    top: 227px;
+    border-color: #222 transparent transparent #222;
+    transform: rotate(45deg);
+}
+
+.game .body .letters {
+    padding:20px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.game .body .letters span {
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 12px 17px;
+    border-radius:5px;
+    background: #009688;
+}
+
+.game .body .letters span.active {
+    background: #222;
+    opacity: .2;
+    pointer-events: none;
+}
+
+.game .foot {
+    background: #eee;
+    padding: 15px;
+    margin: 15px 0;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.game .body .draw div.no-active {
+    display: none;
+}
+
+.game .foot span{
+    width: 40px;
+    height: 40px;
+    background: white;
+    font-weight: bold;
+    border-bottom: 3px solid black;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foot + div {
+    font-size: 20px;
+    text-align: center;
+    background: #eee;
+    padding: 20px 0;
+    color: #e91e63;
+}
+
+.foot + div span {
+    font-weight: bold;
+    color: #009688;
+}
+
+@media (max-width:1000px) {
+    .game {
+        width: 100%;
+    }
+}
+
+@media (max-width:800px) {
+    .game .body {
+        flex-direction: column;
+    }
+
+    .game .body .draw {
+        margin-top: 20px;
+    }
+
+    .game .body .draw,
+    .game .body .letters {
+        width: 100%;
+    }
+
+    .game .foot {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width:490px) {
+    .game .head {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .game h3 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .game .head .details {
+        justify-content: space-between !important;
+        width: 100%;
+    }
+
+    .game .head .details p {
+        display: none;
+    }
+    
+    .game .foot + div {
+        font-size: 16px;
+    }
+}
